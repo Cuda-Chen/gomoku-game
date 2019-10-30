@@ -1,0 +1,8 @@
+function BoyPlay(Current_Step,argin)
+if nargin == 2
+    text(Current_Step - 0.55,argin(2) + 0.1,'\heartsuit','FontSize',45,'Color','r');
+elseif nargin ==1
+    text(Current_Step(1) - 0.55,Current_Step(2) + 0.1,'\heartsuit','FontSize',45,'Color','r');
+else
+    error('Error inputs! ')
+end

@@ -1,0 +1,43 @@
+function flag = is_winner(Step_Set)
+
+% 判断是否形成五连珠
+Step_Setx = Step_Set(:,1);
+Step_Sety = Step_Set(:,2);
+Step_Set = [Step_Setx( Step_Setx > 0 ) Step_Sety( Step_Sety > 0 )]
+flag = 0;
+%% 东西方向五连珠
+
+for i = 1:15
+    East_west = find(Step_Set(:,2) == i);
+    if (length(East_west) >= 5) && is_adjacent(Step_Set(East_west,1),5)
+        flag = 1;
+        break;
+    end
+end
+
+%% 南北方向五连珠
+
+if flag == 0
+    for i = 1:15
+        North_south = find(Step_Set(:,1) == i);
+        if (length(North_south) >= 5) && is_adjacent(Step_Set(North_south,2),5)
+            flag = 1;
+            break;
+        end
+    end
+end
+
+%% 东北方向五连珠
+
+if flag == 0
+    x2y = Step_Set(:,1) - Step_Set(:,2);
+    for i = 1:length(x2y)
+        North_east = find(x2y == x2y(i));
+        if length(North_east) >= 5 && is_adjacent(Step_Set(North_east,1),5)
+            flag = 1;
+            break;
+        end
+    end
+end
+%% 西北方向五连珠
+

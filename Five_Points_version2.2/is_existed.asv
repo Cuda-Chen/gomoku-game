@@ -1,0 +1,8 @@
+function flag = is_existed(Current_Step,Step_Set)
+
+[~, index_x] = find(Step_Set(:,1) == Current(1,1));
+
+if ~isempty(index_x)
+    for i = 1:length(index_x)
+        if Step_Set(index_x(i))
+end

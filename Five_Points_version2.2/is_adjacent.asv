@@ -1,0 +1,10 @@
+function [flag index] = is_adjacent(sequence,len)
+flag = 0;
+sequence = sort(sequence);
+shift_sequence = sequence(2:end);
+string_temp = num2str((shift_sequence - sequence(1:end-1))','%2.0d');
+string_match = repmat('1 ',1,len - 1);
+if ~isempty(strfind(string_temp,string_match(1:end - 1)))
+    index = strfind(string_temp,string_match(1:end - 1))
+    flag = 1;
+end
